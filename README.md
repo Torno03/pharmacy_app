@@ -68,12 +68,11 @@ Track medicines, quantities, pricing, search, update stock levels, and delete en
 ```
 pharmacy_app/
 ├─ app.py
-├─ requirements.txt
-├─ instance/
-│  └─ pharmacy.db
+│  medicine.db
 ├─ templates/
 │  ├─ index.html
-│  ├─ add.html
+│  ├─ add_medicine.html
+│  ├─ restock.html
 │  └─ update.html
 └─ static/
    └─ (optional css/js)
