@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>Add Medicine</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Add New Medicine</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, msg in messages %}
+            <script>alert("{{ msg }}");</script>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+        <label>Generic Name:</label><br>
+        <input type="text" name="generic_name" required><br>
+        <label>Quantity:</label><br>
+        <input type="number" name="quantity" required><br><br>
+        <label>Price per Piece:</label><br>
+        <input type="number" step="0.01" name="price" required><br><br>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+    </form>
+</body>
+</html>

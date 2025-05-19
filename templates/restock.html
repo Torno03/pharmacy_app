@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <title>Restock Needed</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+  <h1>Medicines to Restock</h1>
+  <a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">← Back to Inventory</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>S. No</th>
+        <th>Name</th>
+        <th>Generic Name</th>
+        <th>Price/Unit</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for med in medicines %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ med.name }}</td>
+        <td>{{ med.generic_name }}</td>
+        <td>৳{{ '%.2f'|format(med.price) }}</td>
+        <td>
+          <a href="{{ url_for('update', id=med.id) }}"
+             class="btn btn-sm btn-warning">
+            Restock
+          </a>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="5" class="text-center">All medicines are in stock!</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head><title>Update Medicine</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+  <h2>Update Quantity for “{{ med.name }}”</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, msg in messages %}
+        <script type="text/javascript">
+            alert("{{ msg }}");
+        </script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+  <form method="POST">
+    <p>Current Quantity: {{ med.quantity }}</p>
+    <label>Action:</label><br>
+    <select name="action" required>
+      <option value="sold">Sold</option>
+      <option value="bought">Bought</option>
+    </select><br><br>
+    <label>Amount:</label><br>
+    <input type="number" name="amount" min="1" required><br><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</body>
+</html>
